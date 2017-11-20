@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
+import { createSelector } from 'reselect';
+
 import usersService from 'services/users.service';
-import { users as baseData } from 'services/users.service';
+
 //
 // import nested reducers
 //
@@ -64,7 +66,13 @@ export const setUsers = users => ({
 //
 // Selectors
 //
-// TBC
+export const homeSelector = state => state.home.page;
+export const usersSelector = state => homeSelector(state).users;
+
+export const totalHypeSelector = createSelector(
+    usersSelector,
+    users => users.reduce((acc, usr) => acc + usr.hypePoints, 0)
+);
 
 //
 // Thunks - complex actions ( returns function with dispatch as arg )
