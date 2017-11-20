@@ -3,7 +3,7 @@ import uuid from 'uuid-js';
 //
 // Mocked data
 //
-let users = [
+export let users = [
     { login: 'Justin', id: uuid.create().hex, hypePoints: 31 },
     { login: 'Gienio', id: uuid.create().hex, hypePoints: 30 },
     { login: 'Chudini', id: uuid.create().hex, hypePoints: 30 },

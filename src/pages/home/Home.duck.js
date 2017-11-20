@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import usersService from 'services/users.service';
-
+import { users as baseData } from 'services/users.service';
 //
 // import nested reducers
 //
@@ -18,7 +18,8 @@ const SET_USERS = 'React-Workshops/Home/SET_USERS';
 // State Definition - when exported then easier to test
 //
 export const initialState = {
-    users: [],
+    // Temp
+    users: baseData,
     isFetching: false,
 };
 
