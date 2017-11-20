@@ -19,8 +19,7 @@ const SET_USERS = 'React-Workshops/Home/SET_USERS';
 // State Definition - when exported then easier to test
 //
 export const initialState = {
-    // Temp
-    users: baseData,
+    users: [],
     isFetching: false,
 };
 

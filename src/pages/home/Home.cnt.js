@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { lifecycle, compose } from 'recompose';
 
 import { getUsers } from './Home.duck';
 
@@ -12,4 +13,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     getUsers: () => dispatch(getUsers()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const EnhancedHome = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    lifecycle({
+        componentDidMount() {
+            this.props.getUsers();
+        }
+    })
+)(Home);
+
+export default EnhancedHome;
