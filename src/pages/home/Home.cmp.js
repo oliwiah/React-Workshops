@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+
+import { history } from '../../app.store';
 
 // components & containers
 import Navigation from './navigation/Navigation.cmp';
@@ -10,13 +12,13 @@ import Main from './main/Main.cmp';
 import { HomeContainer } from './Home.styles';
 
 const Home = props => (
-  <BrowserRouter>
+  <ConnectedRouter history={history}>
     <HomeContainer>
       <Navigation />
       <Tabs />
       <Main />
     </HomeContainer>
-  </BrowserRouter>
+  </ConnectedRouter>
 );
 
 export default Home;

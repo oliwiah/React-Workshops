@@ -9,7 +9,13 @@ import {
 
 const Create = (props) => (
     <CreateContainer>
-        TBC
+        <ActionContainer>
+            <Input 
+                placeholder="login"
+                value={props.login}
+                onChange={props.setLogin}/>
+            <Button onClick={props.addUser}>Add User</Button>
+        </ActionContainer>
     </CreateContainer>
 );
 

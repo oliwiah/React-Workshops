@@ -3,12 +3,16 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { MainContainer } from './Main.styles';
 
-import Create from './create/Create.cmp';
+import Create from './create/Create.cnt';
 import Manage from './manage/Manage.cmp';
 
 const Main = props => (
     <MainContainer>
-        TODO
+        <Switch>
+            <Route path="/create" exact component={Create} />
+            <Route path="/manage" exact component={Manage} />
+            <Redirect to='/create' />
+        </Switch>
     </MainContainer>
 );
 
