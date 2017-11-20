@@ -5,6 +5,7 @@ import { users as baseData } from 'services/users.service';
 // import nested reducers
 //
 import createReducer from './main/create/Create.duck';
+import manageReducer from './main/manage/Manage.duck';
 
 //
 // Constants / Action-Types
@@ -90,5 +91,6 @@ export default combineReducers({
     page: homeReducer,
     tabs: combineReducers({
         create: createReducer,
+        manage: manageReducer,
     }),
 });

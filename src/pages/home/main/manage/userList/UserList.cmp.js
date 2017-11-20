@@ -2,11 +2,13 @@ import React from 'react';
 
 import { UserListContainer } from './UserList.styles';
 
-// import User from './user/User.cnt';
+import User from './user/User.cnt';
 
 const UserList = props => (
     <UserListContainer>
-        TODO
+        {
+            props.users.map(usr => <User key={usr.id} user={usr} />)
+        }
     </UserListContainer>
 );
 

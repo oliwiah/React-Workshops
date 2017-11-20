@@ -25,8 +25,8 @@ const addUser = login => new Promise((resolve, reject) => {
     setTimeout(() => resolve([...users, { login, id: uuid.create().hex, hypePoints: 30 }]), 1000);
 });
 
-const deleteUser = login => new Promise((resolve, reject) => {
-    setTimeout(() => resolve(users.filter(usr => usr.login === login )));
+const deleteUser = user => new Promise((resolve, reject) => {
+    setTimeout(() => resolve(users.filter(usr => usr.login !== user.login )));
 })
 
 export default {
