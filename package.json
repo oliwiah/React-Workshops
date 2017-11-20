@@ -16,6 +16,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-slider-monitor": "^2.0.0-1",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "styled-components": "^2.2.3",
     "uuid": "^3.1.0",
     "uuid-js": "^0.7.5"
