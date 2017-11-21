@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { indexBy, prop, map } from 'ramda';
 import { createSelector } from 'reselect';
 
 import usersService from 'services/users.service';
@@ -21,7 +22,6 @@ const SET_USERS = 'React-Workshops/Home/SET_USERS';
 // State Definition - when exported then easier to test
 //
 export const initialState = {
-    users: [],
     isFetching: false,
 };
 
@@ -41,11 +41,24 @@ export const homeReducer = (state = initialState, action = {}) => {
                 ...state,
                 isFetching: false,
             }
+        default:
+            return state;
+    }
+};
+
+export const usersByIdReducer = (state = {}, action = {}) => {
+    switch (action.type) {
         case SET_USERS:
-            return {
-                ...state,
-                users: action.users,
-            };
+            return indexBy(prop('id'), action.users);
+        default:
+            return state;
+    }
+};
+
+export const usersAllIdsReducer = (state = [], action = {}) => {
+    switch (action.type) {
+        case SET_USERS:
+            return map(prop('id'), action.users);
         default:
             return state;
     }
@@ -67,11 +80,14 @@ export const setUsers = users => ({
 // Selectors
 //
 export const homeSelector = state => state.home.page;
-export const usersSelector = state => homeSelector(state).users;
+
+export const userIdsSelector = state => state.home.users.allIds;
+export const usersByIdSelector = (state) => state.home.users.byIds;
 
 export const totalHypeSelector = createSelector(
-    usersSelector,
-    users => users.reduce((acc, usr) => acc + usr.hypePoints, 0)
+    userIdsSelector,
+    usersByIdSelector,
+    (ids, obj) => ids.reduce((acc, id) => acc + obj[id].hypePoints, 0)
 );
 
 //
@@ -99,5 +115,9 @@ export default combineReducers({
     tabs: combineReducers({
         create: createReducer,
         manage: manageReducer,
+    }),
+    users: combineReducers({
+        byIds: usersByIdReducer,
+        allIds: usersAllIdsReducer,
     }),
 });

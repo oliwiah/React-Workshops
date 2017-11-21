@@ -8,7 +8,7 @@ const UserList = props => (
     <UserListContainer>
         <h1>Total Hype Points: { props.totalHypePoints }</h1>
         {
-            props.users.map(usr => <User key={usr.id} user={usr} />)
+            props.usersIds.map(id => <User key={id} userId={id} />)
         }
     </UserListContainer>
 );
