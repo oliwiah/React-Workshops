@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import { usersSelector, totalHypeSelector } from '../../../Home.duck';
+import { userIdsSelector, totalHypeSelector } from '../../../Home.duck';
 
 import UserList from './UserList.cmp';
 
 const mapStateToProps = (state, ownProps) => ({
-    users: usersSelector(state),
+    usersIds: userIdsSelector(state),
     totalHypePoints: totalHypeSelector(state),
 });
 
