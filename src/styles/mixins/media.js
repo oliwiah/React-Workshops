@@ -19,7 +19,7 @@ const media = {
         }
     `,
     phone: (...args) => css`
-        @media screen and (min-width: ${ sizes.minPhone }px) and (max-width: ${ sizes.minDesktop - 1 }px){
+        @media screen and (min-width: ${ sizes.minPhone }px) and (max-width: ${ sizes.minTablet - 1 }px){
             ${css(...args)}
         }
     `
